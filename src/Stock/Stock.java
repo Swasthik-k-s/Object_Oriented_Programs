@@ -18,7 +18,7 @@ public class Stock {
 	public static JSONArray array = new JSONArray();
 
 	public static void main(String[] args) {
-
+		
 		while(true) {
 			System.out.println("1)Add Stock\t2)Print Stocks\t3)Exit\nEnter your Choice");
 			int choice = scanner.nextInt();
@@ -44,11 +44,10 @@ public class Stock {
 		int noOfShares = scanner.nextInt();
 		System.out.println("Enter the Share Price");
 		int sharePrice = scanner.nextInt();
-
+		int totalPrice = noOfShares * sharePrice;
 		JSONObject object = new JSONObject();
 		object.put("name", name);
-		object.put("Number of Shares", noOfShares);
-		object.put("Share Price", sharePrice);
+		object.put("Total Price", totalPrice);
 
 		array.add(object);
 
