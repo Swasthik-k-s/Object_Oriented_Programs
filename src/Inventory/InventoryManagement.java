@@ -1,80 +1,52 @@
 package Inventory;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import org.json.simple.parser.ParseException;
 
 public class InventoryManagement {
-	static Map<String,Double> map = new HashMap<>();
-	
+
 	public static void main(String args[]) {
 		InventoryManagement.inventoryManager();
 	}
-	
+
+	/**
+	 * Method to store the name and total price of all inventories in the map and display the result
+	 */
 	public static void inventoryManager() {
-		List<JSONObject> list = inventoryFactory();
-		
-		for(JSONObject obj : list) {
-			String type=(String) obj.get("type");
-			String name=(String) obj.get("name");
-			double weight=(double) obj.get("weight");
-			double pricePerKg = (double) obj.get("pricePerKg");
-			double totalPrice = pricePerKg*weight;
-			map.put(name, totalPrice);
-		}
-		displayJSON();
-	}
-	
-	private static List<JSONObject> inventoryFactory() {
-		
-		List<JSONObject> list = new ArrayList<JSONObject>();
-		JSONParser parser = new JSONParser();
-		try {
-			Reader reader = new FileReader("G:/Assignments/Object_Oriented_Programs/data/data.json");
-			JSONObject inventory = (JSONObject) parser.parse(reader);
-			JSONArray array= (JSONArray) inventory.get("inventory");
-			Iterator<JSONObject> iterator = array.iterator();
-			while(iterator.hasNext()) {
-				JSONObject object2=iterator.next();
-				list.add(object2);
+		InventoryFactory inventoryFactory = new InventoryFactory();
+		List<JSONObject> inventories = new ArrayList<JSONObject>();
+
+		for (JSONArray inventory : inventoryFactory.getInventories()) {
+			Map<String, Double> map = new HashMap<String, Double>();
+			Iterator<JSONObject> itr = inventory.iterator();
+			while (itr.hasNext()) {
+				JSONObject item = (JSONObject) itr.next();
+				String name = (String) item.get("name");
+				double weight = (double) item.get("weight");
+				double pricePerKg = (double) item.get("pricePerKg");
+				double totalPrice = weight * pricePerKg;
+				map.put(name, totalPrice);
 			}
-			
+
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			inventories.add(object);
 		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
+
+		int count = 1;
+		for (JSONObject inventory : inventories) {
+			System.out.println("Inventory " + count);
+			double sum = 0;
+			for (Object item : inventory.keySet()) {
+				sum += (double) inventory.get(item);
+			}
+			System.out.println("Total Cost: " + sum);
+			System.out.println("Inventory Items");
+			System.out.println(inventory.toJSONString());
+			System.out.println();
+			count++;
 		}
-		
-		return list;
-	}
-	
-	private static void displayJSON() {
-		JSONArray array =  new JSONArray();
-		for (String s: map.keySet()) {
-			JSONObject object1=new JSONObject();
-			object1.put("name", s);
-			object1.put("Totalprice",map.get(s));
-			array.add(object1);
-		}
-		//System.out.println(array);
-		JSONObject mainObject =  new JSONObject();
-		mainObject.put("Result", array);
-		System.out.println(mainObject.toJSONString());
-		
 	}
 }

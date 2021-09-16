@@ -1,0 +1,84 @@
+{
+	"inventories": [
+		[
+			{
+				"type": "rice",
+				"name": "basmathi",
+				"weight": 25.0,
+				"pricePerKg": 79.0
+			},
+			{
+				"type": "rice",
+				"name": "sona masuri",
+				"weight": 10.0,
+				"pricePerKg": 61.0
+			},
+			{
+				"type": "pulses",
+				"name": "lentil",
+				"weight": 5.5,
+				"pricePerKg": 42.0
+			},
+			{
+				"type": "wheat",
+				"name": "ashirvad",
+				"weight": 20.0,
+				"pricePerKg": 49.0
+			}
+		],
+		
+		[
+			{
+				"type": "pulses",
+				"name": "chickpea",
+				"weight": 2.0,
+				"pricePerKg": 37.0
+			},
+			{
+				"type": "pulses",
+				"name": "cereal",
+				"weight": 7.5,
+				"pricePerKg": 51.0
+			},
+			{
+				"type": "pulses",
+				"name": "lentil",
+				"weight": 4.0,
+				"pricePerKg": 37.0
+			},
+			{
+				"type": "wheat",
+				"name": "truefarm",
+				"weight": 15.0,
+				"pricePerKg": 52.0
+			}
+		],
+		
+		[
+			{
+				"type": "rice",
+				"name": "basmathi",
+				"weight": 50.0,
+				"pricePerKg": 72.0
+			},
+			{
+				"type": "pulses",
+				"name": "lentil",
+				"weight": 7.0,
+				"pricePerKg": 61.0
+			},
+			{
+				"type": "pulses",
+				"name": "cereal",
+				"weight": 3.0,
+				"pricePerKg": 41.0
+			},
+			{
+				"type": "wheat",
+				"name": "ashirvad",
+				"weight": 20.0,
+				"pricePerKg": 46.0
+			}
+		]
+	]
+}

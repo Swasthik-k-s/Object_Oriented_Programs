@@ -1,0 +1,19 @@
+{
+	"stocks": [
+		{
+			"stockName": "TCS",
+			"noOfShares": 64,
+			"sharePrice": 9374.0
+		},
+		{
+			"stockName": "Wipro",
+			"noOfShares": 348,
+			"sharePrice": 242.0
+		},
+		{
+			"stockName": "HP",
+			"noOfShares": 9243,
+			"sharePrice": 134.0
+		}
+	]
+}
